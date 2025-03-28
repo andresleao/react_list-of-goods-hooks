@@ -33,7 +33,7 @@ export const App: React.FC = () => {
     (item, index) => item === goodsFromServer[index],
   );
 
-  const haldleSortedList = (type: SortType) => {
+  const handleSortedList = (type: SortType) => {
     setSortType(type);
 
     const source =
@@ -73,7 +73,7 @@ export const App: React.FC = () => {
           className={cn('button is-info', {
             'is-light': sortType !== SortType.Alphabetically,
           })}
-          onClick={() => haldleSortedList(SortType.Alphabetically)}
+          onClick={() => handleSortedList(SortType.Alphabetically)}
         >
           Sort alphabetically
         </button>
@@ -83,7 +83,7 @@ export const App: React.FC = () => {
           className={cn('button is-success', {
             'is-light': sortType !== SortType.Lenght,
           })}
-          onClick={() => haldleSortedList(SortType.Lenght)}
+          onClick={() => handleSortedList(SortType.Lenght)}
         >
           Sort by length
         </button>
@@ -110,13 +110,11 @@ export const App: React.FC = () => {
       </div>
 
       <ul>
-        <ul>
-          {sortedList.map((g: string) => (
-            <li key={g} data-cy="Good">
-              {g}
-            </li>
-          ))}
-        </ul>
+        {sortedList.map((g: string) => (
+          <li key={g} data-cy="Good">
+            {g}
+          </li>
+        ))}
       </ul>
     </div>
   );
